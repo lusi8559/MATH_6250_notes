@@ -1,6 +1,6 @@
 \documentclass{article}
 \title{Differential Geometry Notes}
-\author{Lucas Simon, }
+\author{Lucas Simon}
 \date{\copyright\ 2015 Markus Pflaum, All Rights Reserved} 
 
 \usepackage{amsmath}
@@ -369,4 +369,178 @@ Take $\gamma: [a,b] \to M$ be a smooth curve on $M$. A vector field $X$ on $\gam
 If $X$ is a parallel transport of $v$ and $Y$ is a parallel transport of $w$ (both along $\gamma$) Then $c_1X + c_2Y$ is the unique parallel transport of $c_1v + c_2w$ along $\gamma$. Let $X^{e_i}$ be a parallel transport of $e_i$ along $\gamma$. Taking $f_\gamma:T_{\gamma(a)}M \to T_{\gamma(b)}M$ by $v = i^ie_i \mapsto i^i X^{e_i}$.
 
 Considering all loops in $M$ based at $p \in M$. Taking $\alpha$ as a loop of $M$, the map $f_\alpha: T_{\gamma(a)} \to T_{\gamma(b)}M \in GL(n; \mathbb{R})$
+
+\section{April 6, 2015 (Monday)}
+
+Let $V$ be a finite dimensional $\mathbb{R}$-vector space and $\lambda:V \times V \to \mathbb{R}$ a \textbf{symmetric bilinear form}; that is, $\lambda$ satisfies the following properites:
+
+(1) $\lambda(v + v',w) = \lambda(v,w) + \lambda(v',w)$
+
+(2) $\lambda(av,w) = \lambda(v,aw) = a\lambda(v,w)$
+
+(3) $\lambda(v,w) = \lambda(w,v)$
+
+Moreover, we say $\lambda$ is \textbf{nondegenerate} if $\lambda(v,w) = 0$ if $v = 0$ or $w = 0$.
+
+\textbf{Theorem:}(Sylvester) If $\Lambda: V\times V \to \mathbb{R}$ is a symmetric bilinear form, then there is a basis $(b_i)_{i=1}^n$ of $V$ such that $\lambda$ has the matrix
+%% Look at photograph
+
+\textbf{Observation:} $\lambda$ is non-degenerate iff $ker(\lambda_ij) = 0$.
+
+\textbf{Definitions:} The \textbf{signature} of $\lambda$ is $(n_+,n_-)$ where $n_+$ is the number of positive eigenvalues and $n_-$ is the number of negative eigenvalues. If $n_+$ is the dimension of $V$, then $\lambda$ is called \textbf{positive-definite}. Also, $n_-$ is called the \textbf{index} of $\lambda$.
+
+\textbf{Definition:} A \textbf{semi-riemannian} n-manifold is a manifold $M$ together with a nondegenerate symmetric tensor $g \in \Gamma(T^*M \otimes T^*M)$ such that the index $g_p$ at $p \in M$ is constant for any $p \in M$. If the index of $g$ is 0, then $(M,g)$ is called \textbf{riemannian}. Locally, for some chart $(U,\phi)$ with local coordinates, $x^1, \ldots, x^n$, we can express g as
+\[
+g = g_{ij}dx^i\otimes dx^j
+\]
+
+\textbf{Sidenote:} General relativity is the geometry of 4-dimensional semi-Riemannian manifolds with index 1. A semi-riemannian metric with index 1 is called a \textbf{Lorentz metric}.
+
+\textbf{Remark:} There is no Lorentz metric on $S^2$. (Of topological nature)
+
+\textbf{Theorem:} Every manifold admits a Riemannian metric
+\begin{proof}
+Let $\mathscr{A}$ be an atlas of $M$. For each $(U,x) \in \mathscr{A}$, put $g_U:=x^*(\langle -,- \rangle)$ of the standard euclidean metric on $\mathbb{R}^n$. Choose a partition of unity subordinate to $\mathscr{A}$, $(\phi_V)$. Put
+\[
+g(v,w) = \sum_{(U,\phi)\in \mathscr{A}} \phi_U(p) g_U(v,x) \text{ for } v,w \in T_pM
+\]
+Notice that each point $g_p$ is positive definite and symmetric.
+\end{proof}
+
+\textbf{Observation:} For a lorentz metric, it may cancel out on the partition of unity. Observe
+%\[
+%\frac{1}{2} \left(\begin{array}1&0\\-1&0\end{array}\right) + \frac{1}{2}(-1010) = 0
+%\]
+
+Assume $(M,g)$ is semi-riemannian metric. Let $(U,x)$ be a chart and $\frac{\partial}{\partial x_i}$ a local frame of $TM$. Put $g_{ij}^{(U,x)} := g(\frac{\partial}{\partial x_i}, \frac{\partial}{\partial x_j}) \in C^\infty(U)$. If $(V,y)$ is another coordinate chart with $U\cap V \neq \varnothing$, we want to know how the local expression of $g$ transforms.
+\begin{align*}
+\frac{\partial}{\partial y_j}|_p = \sum_{k=1}^n \frac{\partial (x_k \circ y^{-1})}{\partial y_j}(p) \frac{\partial}{\partial x_k}|p \text{ and } \\
+g_{ij}^{(V,y)}(p) = \sum_{k,l=1}^n \frac{\partial (x_k \circ y^{-1})}{\partial y_j}(p) \cdot \frac{\partial (x_l \circ y^{-1})}{y_j}(p)g_{kl}^{(U,x)}(p) 
+\end{align*}
+
+Assume $N \hookrightarrow M$ is a submanifold, and that $g$ is a semi-riemannian metric on $M$. Then, one can pull-back $g$ to $N$ to a get a symmetric 2-tensor $i^*g \in C^\infty(T^*M \otimes T^*M)$ with
+\[
+i^*g(p)(v,w) = g(i(p))(Ti(y), Ti(w))
+\]
+
+\textbf{Observations:}
+
+(1) If $g$ is positive definite, the $i^*g$ is so as well.
+
+(2) The pull-back of a semi-riemannian metric may not be semi-riemannian. The obstructions for this are topological, but 
+
+\section{April 8, 2015 (Wednesday)}
+\textbf{Exotic Spheres:}(Milnor) There is a family of smooth 7-manifolds with are homeomorphic to $S^7 \subset \mathbb{R}^8$, but not diffeomorphic.
+
+\textbf{Example} Consider
+\[
+\begin{tikzcd}
+\tilde{\mathbb{R}} \arrow[d, "\psi"] & x \arrow[d, mapsto] & & \mathbb{R} \arrow[d, "Id"]\\
+\mathbb{R} & x^3 & & \mathbb{R}
+\end{tikzcd}
+\]
+Observe that these manifolds do not have the same smooth structure, but are diffeomorphic by $\tilde{\mathbb{R}} \xrightarrow{x^{3}} \mathbb{R}$.
+
+(1) We want $M$ to be homeomorphic to $S^n$
+
+(2) Construct $M^7_k$ by sphere bundles $E \to S^4$
+
+(3) Prove that $M^7_k \cong S^n$ as a homeomorphism.
+
+(4) (Black Magic) Construct an invariant $\lambda(M^7_k) \neq \lambda(S^7)$.
+
+First $p \in M$ is a point, and $f:M \to \mathbb{R}$ is a morse function if the Hessian matrix of the critical points is non-singular. Recall that the critical points are the $p \in M$ such that $dH_p = 0$. The Hessian matrix can be represented as the matrix
+\[
+\left( \frac{\partial^2 f}{\partial x_i \partial x_j} \right)_{i,j}
+\]
+
+\textbf{Theorem:} If $M$ is a compact n-manifold with $f$ a morse function with 2 critical points, then $M$ is homeomorphic to $S^n$.
+
+\textbf{Theorem:} Let $f \in C^\infty(M)$, $M^r = f^{-1}(-\infty, r)$, $a< b \in \mathbb{R}$. If $f^{-1}([a,b])$ is compact with no critical points, then $M^a$ is diffeomorphic to $M^b$.
+\begin{proof}
+Let $g$ be a Riemannian metric $g(X,Y) = \langle X, Y \rangle$. Let $\text{grad}(f) \in \mathcal{X}(M)$ with $\langle \text{grad}(f), Y \rangle = \tilde{X}(f)$. Observe $X = \phi\text{grad}(f)$ for $\phi \in C^\infty(f^{-1}[[a,b])$ with \[
+\phi = \frac{1}{ \| \text{grad}(f) \|^2}
+\] is a vector field of compact support. Defines a flow $\phi_t$ with $X(p) = \frac{d}{dt} \phi_t(p)$; consider $f(\phi_t(q))$ as a function of $t$. If $\phi_t(q) \in f^{-1}[a,b]$, then $\frac{d}{dt}f(\phi(q))) = \langle  \frac{d \phi_t(q)}{dt}, \text{grad}(f) \rangle = X(f) = \phi \| \text{grad}(f) \|^2 = 1$. This implies that $f(\phi_t(q)) = f(q) + t$. If $f(q) \leq a$, then $f(\phi_{b-a}(q)) = f(q) + b - a \leq b$.
+\end{proof}
+
+(2) For constructing $M_k^7$, consider a sphere bundle $S^2 \hookrightarrow  M_k^7 \to S^4$. Observe that $S^4 = U^+ \cup U^-$ for $U^+ = S^4 \sim N$ and $U^- = S^4 \sim S$ and each of these sets are homeomorphic to $\mathbb{R}^4$. Decompose $M^7_k$ are the union of the preimage of these sets, and denote them $V^+$ and $V^-$ respectively, these are homeomorphic to $\mathbb{R}^4 \times S^3$. Define a map $V^+ \to V-$ by
+\[
+(u;v) \mapsto \left( \frac{u}{\| u \|^2}; \frac{u^ivu^j}{\| u \|} \right) = (u';v')
+\]
+with $u \in \mathbb{H}$ and $v \in S^3 \subset \mathbb{H}$. We define a morse function $f(u;v)$ by
+\[
+\frac{\text{Re}(v)}{(1 + \| u \|^2)^{1/2}} = \frac{\text{Re}(u'')}{(1+ \| u'' \|^2)^{1/2}}
+\]
+where $u'' = u'(v')^{-1}$.
+
+\section{April 10, 2015}
+
+\textbf{Morse Theory:} Studies smooth functions on a manifold to better understand the underlying topological structure.
+
+Let $f: M \to \mathbb{R}$ be a smooth function. Then the points $p \in M$ such that the differential of $f$ is the 0 map are called \textbf{critical points}. In local coordinates, this may be expressed as
+\[
+\frac{\partial f}{\partial x_i}(p) = 0
+\]
+
+\textbf{Definition:} The Hessian matrix is the matrix
+\[
+H_f \left[\frac{\partial^2}{\partial x_i \partial x_j} \right] = \left(\frac{\partial^2f}{\partial x_i \partial x_j} \right)_{i,j}
+\]
+
+\textbf{Definition:} A critical point is nondegenerate at $p$ of $f$ is the Hessian matrix is nonsingular.
+
+\textbf{Proposition:} The nondegeneracy of a point is independent of the chart used.
+
+\textbf{Definition:} A smooth function $f \in C^\infty(M)$ is called a \textbf{Morse function} if all its critical points are nondegenerate.
+
+\textbf{Lemma:}(Morse Lemma) For a smooth $m$-manifold $M$, a point $b$ is a nondegenerate critical point of a smooth function $f$, there exists a chart $(x_1, \ldots, x_m)$ such that $x_i(b) = 0$ and
+\[
+f = -x_1^2 - x_2^2 - \cdots - x_\alpha^2 + x_{\alpha + 1}^2 + \ldots + x_m^2 + f(b)
+\]
+
+\textbf{Corollary:} Nondegenerate critical points are isolated (there exists a neighborhood of $b$ such that $b$ is the only critical point in this neighborhood)
+
+\textbf{Corollary:} A Morse function on a compact $m$-manifold $M$ has only finitely many critical points.
+
+\textbf{Definition:} Two functions $f,g$ on a smooth $m$-manifold $M$ are called $(C^2, \varepsilon)$-close if the following three properties hold:
+
+(1) $|f(p) - g(p) | < \varepsilon$
+
+(2) $|\frac{\partial f}{\partial x_i}(p) - \frac{\partial g}{\partial x_i}(p)| < \varepsilon$
+
+(3) $|\frac{\partial^2 f}{\partial x_i \partial x_j}(p) - \frac{\partial^2 g}{\partial x_i \partial x_j}(p)| < \varepsilon$
+
+\textbf{Theorem:} Let $g: M \to \mathbb{R}$ be a smooth function. Then there exists a Morse function $f$ such that $f$ and $g$ are $(C^2,\varepsilon)$-close.
+
+\section{13 April, 2015 (Monday)}
+\textbf{Definition:} The \textbf{Minkowski Metric} over $\mathbb{R}^4$ is the metric $g$ such that for any vectors $v,w \in \mathbb{R}^4$, $g(v,w) = -v_1w_1 + v_2w_2 + v_3w_3 + v_4w_4$.
+
+\textbf{Definition:} Recall that a local diffeomorphism
+
+\textbf{Definition:} A local diffeomorphism $\phi:M \to N$ between semi-riemannian manifolds $(M,g_M)$ and $(N,g_N)$ is a local isometry if for all $p \in M$ and $v,w \in T_pM$,
+\[
+g_M(v,w) = g_N(T_p\phi(v), T_p\phi(w))
+\]
+
+\textbf{Observation:} For each semi-riemannian manifold $(M, g)$, the set of isometries form a group, denoted by $Isom(M,g)$.\\
+\textbf{Exercise:} Check that $Isom(M,g)$ is a group.\\
+\textbf{Examples:}
+
+(1) Maps from $\mathbb{R}^n, g_{euc})$ to itself of the form $f: \mathbb{R}^n \to \mathbb{R}^n$, by $v \mapsto Av + b$, where $A \in O(n, \mathbb{R})$ and $v, b \in \mathbb{R}^n$. This space of maps are called the \textbf{Euclidean transformations}. We denote this by $Trans_{euc}(\mathbb{R}^n)$. Notice that compositions of such transformations are an orthogonal transformation.\\
+\textbf{Theorem:} $Trans_{euc}(\mathbb{R}^n) = Isom(\mathbb{R}^n, g_{euc})$ This is highly nontrivial to prove
+
+(2) Maps $f:(\mathbb{R}^n, g_{Min}) \to (\mathbb{R}^n, g_{Min})$ of the form $f(v) = Av + b$ for $A \in O(n,1) = \{ A \in GL(n+1, \mathbb{R})) : g_{Min}(Av,Aw) = g_{Min}(v,w) \}$. The set of all transformations is a group called the poincare group. This is the isometry group.
+
+(3) The set of isometries of the sphere $S^n$ is $O(n+1)$.
+
+\textbf{Covariant Derivatives:} Let $\eta: M \to TM$ be a vector field. It's exterior derivative is a map $T\eta: TM \to TTM$. If $\xi \in T_pM$, then $T\eta \xi \in T_{\eta(p)}TM \neq TM$; this is a problem!
+
+\textbf{Definition:} By a covariant derivative (or connection) on a manifold $M$ is a map $\nabla: \mathfrak{X}^\infty(M) \to \Omega^1(M) \otimes_{C^\infty (M)} \mathfrak{X}^\infty(M)$ such that the following holds true:
+\[
+\nabla_\xi(f\eta) = df \otimes \eta + f\nabla_\xi(\eta)
+\]
+This implies the following properties:
+
+\section{April 15, 2015 (Wednesday)}
+
 \end{document}
